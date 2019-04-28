@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>achieve_shop</title>
+    {% load my_tags %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <style>
+        /* The side navigation menu */
+    .sidenav {
+      height: 100%; /* 100% Full-height */
+      width: 0; /* 0 width - change this with JavaScript */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Stay on top */
+      top: 0; /* Stay at the top */
+      left: 0;
+      background-color: #1450b1; /* Black*/
+      overflow-x: hidden; /* Disable horizontal scroll */
+      padding-top: 60px; /* Place content 60px from the top */
+      transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+    }
+
+    a{
+            color: black;
+        }
+    /* The navigation menu links */
+    a {
+      color: black;
+    }
+
+    /* When you mouse over the navigation links, change their color */
+    a:hover {
+      color: black;
+    }
+
+    /* Position and style the close button (top right corner) */
+    .sidenav .closebtn {
+      position: absolute;
+      top: 0;
+      right: 25px;
+      font-size: 45px;
+      margin-left: 50px;
+        color: white;
+    }
+
+    </style>
+</head>
+<body>
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div>
+            <div style="float: left; width: 40%; margin-top: 140px; color: white; font-size: 32px; margin-left: 90px">
+                <strong style="font-size: 35px">{{ user.first_name }} {{ user.last_name }}<br><br></strong>
+                <strong>Команда:</strong> Credit<br>
+                <strong>Роль:</strong> Программист<br>
+                <strong>Квалификация:</strong> {{ user.extrainfo.role }}<br><br>
+
+            </div>
+            <div style="float: right; margin-top: 200px; width: 40%; "><img width="70%" height="70%" alt="" src="https://i.ibb.co/PrXmnb3/user-2.png" ></div>
+
+        </div>
+        <div style="background-color: #0c2658; margin-top: 600px; height: 10%; color: white; font-size: 32px; padding-top: 6%; padding-left: 90px">
+            <strong>Баланс:</strong> {{ user.extrainfo.achieves }} ачивок<br>
+                1 ачивка = 3000 руб
+        </div>
+        <div style="background-color: white; height: 100%; padding-top: 100px; padding-left: 90px; font-size: 35px" >
+            <a href="/current_sprint/">KPI на текущий спринт</a><br>
+            <a href="/all_sprints_states/">Статистика</a><br>
+            <a href="/zones_of_growth/">Зоны роста</a><br>
+            <a href="/achieves/states/">Статистика ачивок</a><br>
+            <a href="/achieves/shop/">Магазин ачивок</a><br>
+            <a href="/logout/">Выход</a><br>
+        </div>
+    </div>
+    <span onclick="openNav()" style="padding: 30px; ">
+        <img alt="=" src="https://i.ibb.co/fYMzFtM/menu-button-of-three-horizontal-lines.png" height="10%" width="10%" style="margin-top: 50px">
+        <!--
+                if state == 'per_from_all_tests':
+        for state in states:
+            all_states.append(state.per_from_all_tests)
+    elif state == 'per_from_builds':
+        for state in states:
+            all_states.append(state.per_from_builds)
+    elif state == 'num_commits':
+        for state in states:
+            all_states.append(state.num_commits)
+    elif state == 'per_over_tests':
+        for state in states:
+            all_states.append(state.per_over_tests)
+    else:
+        for state in states:
+            all_states.append(state.num_of_unclosed_tasks)
+    return render(request, 'index.html', {'all_states': all_states, 'type': state})
+
+        !-->
+        <div style="float:right; width: 80%; font-size: 57px; padding-top: 56px">
+            Статистика ачивок
+        </div>
+
+    </span>
+    <!--
+        Здесь само тело
+    !-->
+
+    <div style="margin: auto; margin-top: 70px; padding: 50px">
+		<div class="progress" style="height: 80px; margin-top: 20px">
+  			<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: {{ ach.0|dv:length}}%;">
+  				<div style="text-align: center; font-size: 35px">
+  					{{ ach.0 }}/{{ length }}
+  				</div>
+  			</div>
+		</div>
+		<p style="margin-top: 20px; text-align: left; font-size: 35px">Процент успешных от всех тестов</p>
+        <div class="progress" style="height: 80px; margin-top: 20px">
+  			<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: {{ ach.1|dv:length}}%;">
+  				<div style="text-align: center; font-size: 35px">
+  					{{ ach.1 }}/{{ length }}
+  				</div>
+  			</div>
+		</div>
+		<p style="margin-top: 20px; text-align: left; font-size: 35px">Процент успешных от всех сборок</p>
+        <div class="progress" style="height: 80px; margin-top: 20px">
+  			<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: {{ ach.2|dv:length}}%;">
+  				<div style="text-align: center; font-size: 35px">
+  					{{ ach.2 }}/{{ length }}
+  				</div>
+  			</div>
+		</div>
+		<p style="margin-top: 20px; text-align: left; font-size: 35px">Число коммитов</p>
+        <div class="progress" style="height: 80px; margin-top: 20px">
+  			<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: {{ ach.3|dv:length}}%;">
+  				<div style="text-align: center; font-size: 35px">
+  					{{ ach.3 }}/{{ length }}
+  				</div>
+  			</div>
+		</div>
+		<p style="margin-top: 20px; text-align: left; font-size: 35px">Число незакрытых задач</p>
+        <div class="progress" style="height: 80px; margin-top: 20px">
+  			<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: {{ ach.4|dv:length}}%;">
+  				<div style="text-align: center; font-size: 35px">
+  					{{ ach.4 }}/{{ length }}
+  				</div>
+  			</div>
+		</div>
+		<p style="margin-top: 20px; text-align: left; font-size: 35px">Процент покрытия кода тестами</p>
+	</div>
+
+    <script>
+        function openNav() {
+          document.getElementById("mySidenav").style.width = "80%";
+        }
+
+        function closeNav() {
+          document.getElementById("mySidenav").style.width = "0";
+        }
+    </script>
+</body>
+</html>

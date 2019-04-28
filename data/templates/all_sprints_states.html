@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>all_sprints_states</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <style>
+        /* The side navigation menu */
+    .sidenav {
+      height: 100%; /* 100% Full-height */
+      width: 0; /* 0 width - change this with JavaScript */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Stay on top */
+      top: 0; /* Stay at the top */
+      left: 0;
+      background-color: #1450b1; /* Black*/
+      overflow-x: hidden; /* Disable horizontal scroll */
+      padding-top: 60px; /* Place content 60px from the top */
+      transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+    }
+
+    a{
+            color: black;
+        }
+    /* The navigation menu links */
+    a {
+      color: black;
+    }
+
+    /* When you mouse over the navigation links, change their color */
+    a:hover {
+      color: black;
+    }
+
+    /* Position and style the close button (top right corner) */
+    .sidenav .closebtn {
+      position: absolute;
+      top: 0;
+      right: 25px;
+      font-size: 45px;
+      margin-left: 50px;
+        color: white;
+    }
+
+    </style>
+</head>
+<body>
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div>
+            <div style="float: left; width: 40%; margin-top: 140px; color: white; font-size: 32px; margin-left: 90px">
+                <strong style="font-size: 35px">{{ user.first_name }} {{ user.last_name }}<br><br></strong>
+                <strong>Команда:</strong> Credit<br>
+                <strong>Роль:</strong> Программист<br>
+                <strong>Квалификация:</strong> {{ user.extrainfo.role }}<br><br>
+
+            </div>
+            <div style="float: right; margin-top: 200px; width: 40%; "><img width="70%" height="70%" alt="" src="https://i.ibb.co/PrXmnb3/user-2.png" ></div>
+
+        </div>
+        <div style="background-color: #0c2658; margin-top: 600px; height: 10%; color: white; font-size: 32px; padding-top: 6%; padding-left: 90px">
+            <strong>Баланс:</strong> {{ user.extrainfo.achieves }} ачивок<br>
+                1 ачивка = 3000 руб
+        </div>
+        <div style="background-color: white; height: 100%; padding-top: 100px; padding-left: 90px; font-size: 35px" >
+            <a href="/current_sprint/">KPI на текущий спринт</a><br>
+            <a href="/all_sprints_states/">Статистика</a><br>
+            <a href="/zones_of_growth/">Зоны роста</a><br>
+            <a href="/achieves/states/">Статистика ачивок</a><br>
+            <a href="/achieves/shop/">Магазин ачивок</a><br>
+            <a href="/logout/">Выход</a><br>
+        </div>
+    </div>
+    <span onclick="openNav()" style="padding: 30px; ">
+        <img alt="=" src="https://i.ibb.co/fYMzFtM/menu-button-of-three-horizontal-lines.png" height="10%" width="10%" style="margin-top: 50px">
+
+        <div style="float:right; width: 80%; font-size: 57px; padding-top: 56px">Статистика за все спринты</div>
+
+    </span>
+    <div class="row justify-content-center" style="padding: 40px; padding-top: 70px; font-size: 40px">
+        <div class="col-5">
+            <a href="/all_sprints_states/per_from_all_tests/"><img src="https://i.ibb.co/Dr9hV24/success.png" width="100%"><br><br>
+            Процент успешных от всех тестов</a>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-5" >
+
+             <a href="/all_sprints_states/per_from_builds/"><img src="https://i.ibb.co/5M99ydN/tools-and-utensils.png" width="100%"><br><br>
+            Процент успешных от всех сборок</a>
+        </div>
+    </div>
+    <div class="row justify-content-center" style="padding: 40px; font-size: 40px;">
+        <div class="col-5">
+             <a href="/all_sprints_states/num_commits/"><img src="https://i.ibb.co/2n4PZhJ/send.png" width="100%" ><br><br>
+            Число коммитов</a>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-5" >
+             <a href="/all_sprints_states/num_of_unclosed_tasks/"><img src="https://i.ibb.co/HpVQMzf/clipboard.png" width="100%"><br><br>
+            Число незакрытых задач</a>
+        </div>
+    </div>
+    <div class="row justify-content-center" style="padding: 40px;  font-size: 40px;">
+        <div class="col-5">
+
+             <a href="/all_sprints_states/per_over_tests/"><img src="https://i.ibb.co/hcNLbCR/spider.png" width="100%"><br><br>
+            Процент покрытия кода тестами</a>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-5" >
+        </div>
+    </div>
+    <script>
+        function openNav() {
+          document.getElementById("mySidenav").style.width = "80%";
+        }
+
+        function closeNav() {
+          document.getElementById("mySidenav").style.width = "0";
+        }
+    </script>
+</body>
+</html>

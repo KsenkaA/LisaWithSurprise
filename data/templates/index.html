@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <style>
+        /* The side navigation menu */
+    .sidenav {
+      height: 100%; /* 100% Full-height */
+      width: 0; /* 0 width - change this with JavaScript */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Stay on top */
+      top: 0; /* Stay at the top */
+      left: 0;
+      background-color: #1450b1; /* Black*/
+      overflow-x: hidden; /* Disable horizontal scroll */
+      padding-top: 60px; /* Place content 60px from the top */
+      transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+    }
+
+    /* The navigation menu links */
+    a {
+      color: black;
+        display: block;
+    }
+
+    /* When you mouse over the navigation links, change their color */
+    a:hover {
+      color: black;
+    }
+
+    a:visited {
+      color: black;
+    }
+
+    /* Position and style the close button (top right corner) */
+    .sidenav .closebtn {
+      position: absolute;
+      top: 0;
+      right: 25px;
+      font-size: 45px;
+      margin-left: 50px;
+        color: white;
+    }
+
+
+    </style>
+</head>
+<body>
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div>
+            <div style="float: left; width: 40%; margin-top: 140px; color: white; font-size: 32px; margin-left: 90px">
+                <strong style="font-size: 35px">{{ user.first_name }} {{ user.last_name }}<br><br></strong>
+                <strong>Команда:</strong> Credit<br>
+                <strong>Роль:</strong> Программист<br>
+                <strong>Квалификация:</strong> {{ user.extrainfo.role }}<br><br>
+
+            </div>
+            <div style="float: right; margin-top: 200px; width: 40%; "><img width="70%" height="70%" alt="" src="https://i.ibb.co/PrXmnb3/user-2.png" ></div>
+
+        </div>
+        <div style="background-color: #0c2658; margin-top: 600px; height: 10%; color: white; font-size: 32px; padding-top: 6%; padding-left: 90px">
+            <strong>Баланс:</strong> {{ user.extrainfo.achieves }} ачивок<br>
+                1 ачивка = 3000 руб
+        </div>
+        <div style="background-color: white; height: 100%; padding-top: 100px; padding-left: 90px; font-size: 35px" >
+            <a href="/current_sprint/">KPI на текущий спринт</a><br>
+            <a href="/all_sprints_states/">Статистика</a><br>
+            <a href="/zones_of_growth/">Зоны роста</a><br>
+            <a href="/achieves/states/">Статистика ачивок</a><br>
+            <a href="/achieves/shop/">Магазин ачивок</a><br>
+            <a href="/logout/">Выход</a><br>
+        </div>
+    </div>
+    <span onclick="openNav()" style="padding: 30px; "><img alt="=" src="https://i.ibb.co/fYMzFtM/menu-button-of-three-horizontal-lines.png" height="10%" width="10%" style="margin-top: 50px"></span>
+
+    <div id="main" class="row justify-content-center">
+      <div class="col-10" style="text-align: center; font-size: 50px; color: #1450b1">
+
+          <img style="margin: 0px auto;" height="60%" src="https://i.ibb.co/RTt3sJ1/gas.png">
+          <br><br><br><br>
+          <button style="width: 100%; background-color: white; color: #0c2658; height: 100px; border: 3px solid #0c2658; border-radius: 15px " onclick="window.location.href = '/current_sprint/';" >KPI на текущий спринт </button><br><br>
+          <button style="width: 100%; background-color: white; color: #0c2658; height: 100px; border: 3px solid #0c2658; border-radius: 15px" onclick="window.location.href = '/all_sprints_states/';">Статистика за все спринты</button><br><br>
+          <button style="width: 100%; background-color: white; color: #0c2658; height: 100px; border: 3px solid #0c2658; border-radius: 15px" onclick="window.location.href = '/zones_of_growth/';">Зоны роста</button><br><br>
+            <button style="width: 100%; background-color: white; color: #0c2658; height: 100px; border: 3px solid #0c2658; border-radius: 15px" onclick="window.location.href = '/achieves/states/';">Статистика ачивок</button><br><br>
+
+      </div>
+    </div>
+    <script>
+        function openNav() {
+          document.getElementById("mySidenav").style.width = "80%";
+        }
+
+        function closeNav() {
+          document.getElementById("mySidenav").style.width = "0";
+        }
+    </script>
+</body>
+</html>
